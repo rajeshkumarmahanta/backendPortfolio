@@ -1,5 +1,6 @@
 
   const messageModel = require("../models/Message");
+require("dotenv").config();
 const handleMessageGet = async(req,res)=>{
     try {
         let messageUsers = await messageModel.find();
