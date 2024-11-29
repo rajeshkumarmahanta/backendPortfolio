@@ -57,8 +57,11 @@ app.use(cors({
         } else {
             callback(new Error('Not allowed by CORS'));
         }
-    }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow specific methods
+    credentials: true // Allow cookies or authentication headers
 }));
+app.options('*', cors()); // Handle preflight requests for all routes
 // app.use(cors({
 //     origin: 'https://portfoliorajesh.netlify.app'
 // }));
