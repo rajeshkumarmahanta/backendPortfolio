@@ -45,10 +45,23 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+const allowedOrigins = [
+    'https://portfoliorajesh.netlify.app',
+    'https://portfolioadminrajesh.netlify.app'
+];
 app.use(cors({
-  origin:['https://portfolioadminrajesh.netlify.app/','https://portfoliorajesh.netlify.app/'],
-  methods: ['GET', 'POST','PUT','DELETE']
+    origin: function (origin, callback) {
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }));
+// app.use(cors({
+//     origin: 'https://portfoliorajesh.netlify.app'
+// }));
 app.use(cookieParser());
 app.use(express.static("public"));
 app.use("/admin",adminRouter);
