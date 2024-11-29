@@ -45,7 +45,10 @@ const nodemailer = require("nodemailer");
 require("dotenv").config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors({
+  origin:['https://portfolioadminrajesh.netlify.app','https://portfoliorajesh.netlify.app/'],
+  methods: ['GET', 'POST','PUT','DELETE']
+}));
 app.use(cookieParser());
 app.use(express.static("public"));
 app.use("/admin",adminRouter);
