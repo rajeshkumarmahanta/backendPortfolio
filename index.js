@@ -55,7 +55,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     origin: ['http://localhost:5173/','http://localhost:5174/'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific methods
-    credentials: true // Allow cookies or authentication headers
+    credentials: true,
+    allowedHeaders: ['Content-Type']// Allow cookies or authentication headers
 }));
 // app.options('*', cors()); // Handle preflight requests for all routes
 // app.use(cors({
