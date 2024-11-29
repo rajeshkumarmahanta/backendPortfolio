@@ -51,18 +51,12 @@ app.use(express.urlencoded({ extended: true }));
 //     'https://portfolioadminrajesh.netlify.app'
 // ];
 
-app.use(cors());
-// app.use(cors({
-//     origin: function (origin, callback) {
-//         if (allowedOrigins.includes(origin)) {
-//             callback(null, true);
-//         } else {
-//             callback(new Error('Not allowed by CORS'));
-//         }
-//     },
-//     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow specific methods
-//     credentials: true // Allow cookies or authentication headers
-// }));
+// app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:5173/','http://localhost:5174/'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow specific methods
+    credentials: true // Allow cookies or authentication headers
+}));
 // app.options('*', cors()); // Handle preflight requests for all routes
 // app.use(cors({
 //     origin: 'https://portfoliorajesh.netlify.app'
